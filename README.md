@@ -1,4 +1,4 @@
-# Library Project
+# Django - Library Project
 
 A simple Django web app to manage books with login functionality.
 
