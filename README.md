@@ -9,8 +9,8 @@ A simple Django web app to manage books with login functionality.
 ## Teacher Login
 Use these credentials to access the app:
 
-- **Username:** teacher_demo  
-- **Password:** demo123  
+- **Username:** admin  
+- **Password:** pwd
 
 ## How to Run
 1. Clone the repo and navigate into it.
