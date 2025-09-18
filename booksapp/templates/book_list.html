@@ -1,0 +1,17 @@
+<h2>Book Library</h2>
+
+<a href="{% url 'book_create' %}"> Add Book</a> | 
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+<ul>
+{% for book in books %}
+  <li>
+    {{ book.bookid }} - {{ book.name }} by {{ book.author }} (₹{{ book.price }})
+    <a href="{% url 'book_update' book.id %}">Edit</a>
+    <a href="{% url 'book_delete' book.id %}">Delete</a>
+  </li>
+{% endfor %}
+</ul>
