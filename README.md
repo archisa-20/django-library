@@ -6,7 +6,7 @@ A simple Django web app to manage books with login functionality.
 - Login/Logout
 - Add, View, Edit, Delete Books
 
-## Teacher Login
+## Login
 Use these credentials to access the app:
 
 - **Username:** admin  
