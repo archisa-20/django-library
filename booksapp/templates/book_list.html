@@ -1,17 +1,52 @@
-<h2>Book Library</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+</head>
+<body>
+    <h1>Library Book List</h1>
 
-<a href="{% url 'book_create' %}"> Add Book</a> | 
-<form method="post" action="{% url 'logout' %}">
+    <p><a href="{% url 'book_create' %}">Add New Book</a></p>
+    <p><form method="post" action="{% url 'logout' %}">
     {% csrf_token %}
     <button type="submit">Logout</button>
 </form>
+</p>
 
-<ul>
-{% for book in books %}
-  <li>
-    {{ book.bookid }} - {{ book.name }} by {{ book.author }} (₹{{ book.price }})
-    <a href="{% url 'book_update' book.id %}">Edit</a>
-    <a href="{% url 'book_delete' book.id %}">Delete</a>
-  </li>
-{% endfor %}
-</ul>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Total Quantity</th>
+            <th>Issued</th>
+            <th>Publisher</th>
+            <th>Language</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for book in books %}
+        <tr>
+            <td>{{ book.bookid }}</td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.total_quantity }}</td>
+            <td>{{ book.issued }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.language }}</td>
+            <td>
+                <a href="{% url 'book_update' book.pk %}">Edit</a> |
+                <a href="{% url 'book_delete' book.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="9">No books available.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+

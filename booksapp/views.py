@@ -16,8 +16,21 @@ def book_create(request):
         name = request.POST["name"]
         author = request.POST["author"]
         price = request.POST["price"]
+        total_quantity = request.POST["total_quantity"]
+        issued = request.POST["issued"]
+        publisher = request.POST["publisher"]
+        language = request.POST["language"]
 
-        Book.objects.create(bookid=bookid, name=name, author=author, price=price)
+        Book.objects.create(
+            bookid=bookid,
+            name=name,
+            author=author,
+            price=price,
+            total_quantity=total_quantity,
+            issued=issued,
+            publisher=publisher,
+            language=language
+        )
         return redirect("book_list")
 
     return render(request, "book_form.html")
@@ -32,6 +45,11 @@ def book_update(request, pk):
         book.name = request.POST["name"]
         book.author = request.POST["author"]
         book.price = request.POST["price"]
+        book.total_quantity = request.POST["total_quantity"]
+        book.issued = request.POST["issued"]
+        book.publisher = request.POST["publisher"]
+        book.language = request.POST["language"]
+
         book.save()
         return redirect("book_list")
 
